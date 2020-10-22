@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ResultSuccess = () => {
+const ResultSuccessScreen = () => {
   return (
     <section className="result">
       <div className="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/></div>
@@ -11,6 +11,6 @@ const ResultSuccess = () => {
   );
 };
 
-export default ResultSuccess;
+export default ResultSuccessScreen;
 
 

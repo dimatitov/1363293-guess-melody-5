@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = () => {
+const LoginScreen = () => {
   return (
     <section className="login">
       <div className="login__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83" /></div>
@@ -23,4 +23,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginScreen;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const QuestionGenre = () => {
+const QuestionGenreScreen = () => {
   return (
     <section className="game game--artist">
       <header className="game__header">
@@ -68,4 +68,4 @@ const QuestionGenre = () => {
   );
 };
 
-export default QuestionGenre;
+export default QuestionGenreScreen;

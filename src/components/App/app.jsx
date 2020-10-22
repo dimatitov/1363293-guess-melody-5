@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import WelcomeScreen from "../WelcomeScreen/welcome-screen";
-import Login from "../Login/login";
-import QuestionArtist from "../QuestionArtist/question-artist";
-import QuestionGenre from "../QuestionGenre/question-genre";
-import ResultSuccess from "../ResultSuccess/result-success";
-import FailTries from "../FailTries/fail-tries";
+import LoginScreen from "../LoginScreen/login-screen";
+import QuestionArtistScreen from "../QuestionArtistScreen/question-artist-screen";
+import QuestionGenreScreen from "../QuestionGenreScreen/question-genre-screen";
+import ResultSuccessScreen from "../ResultSuccessScreen/result-success-screen";
+import FailTriesScreen from "../FailTriesScreen/fail-tries-screen";
 
 const App = ({errorCounter}) => {
   return (
@@ -16,19 +16,19 @@ const App = ({errorCounter}) => {
           <WelcomeScreen errorCounter={errorCounter}/>
         </Route>
         <Route exact path={`/login`}>
-          <Login />
+          <LoginScreen />
         </Route>
         <Route exact path={`/dev-artist`}>
-          <QuestionArtist />
+          <QuestionArtistScreen />
         </Route>
         <Route exact path={`/dev-genre`}>
-          <QuestionGenre />
+          <QuestionGenreScreen />
         </Route>
         <Route exact path={`/result`}>
-          <ResultSuccess />
+          <ResultSuccessScreen />
         </Route>
         <Route exact path={`/lose`}>
-          <FailTries />
+          <FailTriesScreen />
         </Route>
       </Switch>
     </BrowserRouter>

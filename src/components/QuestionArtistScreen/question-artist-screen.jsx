@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 
 
-const QuestionArtist = () => {
+const QuestionArtistScreen = () => {
   return (
     <Fragment>
       <section className="game game--artist">
@@ -58,4 +58,4 @@ const QuestionArtist = () => {
   );
 };
 
-export default QuestionArtist;
+export default QuestionArtistScreen;
