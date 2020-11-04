@@ -7,22 +7,37 @@ import QuestionArtistScreen from "../QuestionArtistScreen/question-artist-screen
 import QuestionGenreScreen from "../QuestionGenreScreen/question-genre-screen";
 import ResultSuccessScreen from "../ResultSuccessScreen/result-success-screen";
 import FailTriesScreen from "../FailTriesScreen/fail-tries-screen";
+import GameScreen from "../GameScreen/game-screen";
 
-const App = ({errorCounter}) => {
+
+const App = ({errorCounter, questions}) => {
+  const [firstQuestion, secondQuestion] = questions;
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={`/`}>
-          <WelcomeScreen errorCounter={errorCounter}/>
-        </Route>
+        <Route exact
+          path={`/`}
+          render={({history}) => (
+            <WelcomeScreen
+              errorCounter={errorCounter}
+              onPlayButtonScreen={() => history.push(`/game`)}
+            />
+          )}
+        />
         <Route exact path={`/login`}>
           <LoginScreen />
         </Route>
         <Route exact path={`/dev-artist`}>
-          <QuestionArtistScreen />
+          <QuestionArtistScreen
+            question={secondQuestion}
+            onAnswer={() => {}}
+          />
         </Route>
         <Route exact path={`/dev-genre`}>
-          <QuestionGenreScreen />
+          <QuestionGenreScreen
+            onAnswer={() => {}}
+            question={firstQuestion}
+          />
         </Route>
         <Route exact path={`/result`}>
           <ResultSuccessScreen />
@@ -30,13 +45,20 @@ const App = ({errorCounter}) => {
         <Route exact path={`/lose`}>
           <FailTriesScreen />
         </Route>
+        <Route exact path={`/game`}>
+          <GameScreen
+            questions={questions}
+            errorsCount={errorCounter}
+          />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
 };
 
 App.propTypes = {
-  errorCounter: PropTypes.number.isRequired
+  errorCounter: PropTypes.number.isRequired,
+  questions: PropTypes.array.isRequired
 };
 
 export default App;
