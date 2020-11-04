@@ -11,8 +11,14 @@ class QuestionGenreScreen extends PureComponent {
     };
   }
 
-  render() {
+  handleClickChoiceAnswer(event) {
     const {question, onAnswer} = this.props;
+    event.preventDefault();
+    onAnswer(question, this.state.answers);
+  }
+
+  render() {
+    const {question} = this.props;
     const {answers: userAnswers} = this.state;
     return (
       <section className="game game--artist">
@@ -31,11 +37,8 @@ class QuestionGenreScreen extends PureComponent {
           </div>
         </header>
         <section className="game__screen">
-          <h2 className="game__title">Выберите треки</h2>
-          <form className="game__tracks" onSubmit={(event) => {
-            event.preventDefault();
-            onAnswer(question, this.state.answers);
-          }}>
+          <h2 className="game__title">Выберите {question.genre} треки</h2>
+          <form className="game__tracks" onSubmit={this.handleClickChoiceAnswer}>
             {question.answers.map((answer, i) => (
               <div className="track" key={`${i}-${answer.src}`}>
                 <button className="track__button track__button--play" type="button"/>
@@ -65,8 +68,8 @@ class QuestionGenreScreen extends PureComponent {
         </section>
       </section>
     );
-  };
-};
+  }
+}
 
 QuestionGenreScreen.propTypes = {
   onAnswer: PropTypes.func.isRequired,

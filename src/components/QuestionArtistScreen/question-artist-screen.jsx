@@ -42,8 +42,8 @@ const QuestionArtistScreen = ({question, onAnswer}) => {
                   name="answer"
                   value={`answer-${i}`}
                   id={`answer-${i}`}
-                  onChange={(env) => {
-                    env.preventDefault();
+                  onChange={(event) => {
+                    event.preventDefault();
                     onAnswer(question, answer);
                   }}
                 />

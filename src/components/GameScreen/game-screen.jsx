@@ -14,40 +14,34 @@ class GameScreen extends PureComponent {
     };
   }
 
+  onAnswer() {
+    this.setState((prevState) => ({
+      step: prevState.step + 1,
+    }));
+  }
+
   render() {
     const {questions} = this.props;
-    console.log("questions in gameScreen: ", questions);
     const {step} = this.state;
     const question = questions[step];
-
     if (step >= questions.length || !question) {
       return (
         <Redirect to="/" />
       );
     }
-    console.log("question: ", question);
-
     switch (question.type) {
       case GameType.ARTIST:
         return (
           <QuestionArtistScreen
             question={question}
-            onAnswer={() => {
-              this.setState((prevState) => ({
-                step: prevState.step + 1,
-              }));
-            }}
+            onAnswer={this.onAnswer}
           />
         );
       case GameType.GENRE:
         return (
           <QuestionGenreScreen
             question={question}
-            onAnswer={() => {
-              this.setState((prevState) => ({
-                step: prevState.step + 1,
-              }));
-            }}
+            onAnswer={this.onAnswer}
           />
         );
     }
